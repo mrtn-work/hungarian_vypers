@@ -1,6 +1,6 @@
 <template>
   <nav class="fixed top-0 left-0 px-2 md:px-5 py-5 w-full z-50">
-    <div class="nav-blur rounded-2xl max-w-screen-lg mx-auto">
+    <div class="blur-bg rounded-2xl max-w-screen-lg mx-auto">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-5 py-2.5">
       <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
         <logo class="dark:text-white" />

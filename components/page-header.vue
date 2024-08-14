@@ -13,7 +13,7 @@ defineProps<{
       </h1>
       <p class="dark:text-gray-400">Szerverek</p>
       <server-box :title="serverName" :ip="serverIp" />
-      <button class="mt-2 dark:bg-gray-900 dark:text-gray-400 rounded-lg text-sm text-center px-3 py-1 mx-auto">
+      <button class="mt-2 blur-bg dark:text-gray-400 rounded-lg text-sm text-center px-3 py-1 mx-auto">
         Továbbiak megtekintése
       </button>
     </div>
@@ -27,19 +27,3 @@ defineProps<{
     </div>
   </header>
 </template>
-
-<style scoped>
-.hu-gradient {
-  background: linear-gradient(to right, #ef4444, white, #22c55e);
-  background-clip: border-box;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.gaming-gradient {
-  background: linear-gradient(to top right, #8e4dcd, #cb3e87);
-  background-clip: border-box;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-</style>

@@ -24,5 +24,10 @@ const admins = computed(() => data.value?.admins || [])
   <div class="min-h-screen flex items-center justify-center">
     <page-header :server-name="firstServer.hostname" :server-ip="firstServer.address" />
   </div>
+  <stats/>
+  <br/>
+  <h2 class="inter text-4xl mt-5">
+    <span class="gaming-gradient">Szerverek</span>&nbsp;és&nbsp;<span class="gaming-gradient">Személyzet</span>
+  </h2>
   <servers-and-staffs :servers="servers" :admins="admins" />
 </template>

@@ -9,14 +9,15 @@
 
 <script setup lang="ts">
 import '~/assets/css/main.css'
-import {useCookie} from "#imports";
-import {onMounted} from "vue";
+import {useCookie} from "#imports"
 
 const theme = useCookie('theme', {
   default: () => 'dark'
 })
 
-onMounted(() => {
-  if(theme.value == 'dark') document.querySelector('html')?.classList.add('dark')
+useHead({
+  htmlAttrs: {
+    class: [theme.value, 'bg-[#08090a]'].join(' ')
+  }
 })
 </script>
