@@ -1,9 +1,9 @@
 <template>
-  <button @click="copy" class="px-4 py-0.5 rounded-lg border dark:border-purple-500 text-sm dark:text-purple-500 flex items-center space-x-1">
+  <button @click="handleCopy" class="px-4 py-0.5 rounded-lg border border-purple-400 text-purple-400 dark:border-purple-500 text-xs md:text-sm dark:text-purple-500 flex items-center space-x-1">
     <span>
       <slot/>
     </span>
-    <copy v-if="!processing" />
+    <copy />
   </button>
 </template>
 
@@ -14,5 +14,8 @@ const props = defineProps<{
   copyText: string
 }>()
 
-const processing = ref(false)
+const handleCopy = async () => {
+  if(navigator) await navigator.clipboard.writeText(props.copyText)
+}
+
 </script>

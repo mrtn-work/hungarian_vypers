@@ -1,0 +1,27 @@
+services:
+  database:
+    image: 'mysql:latest'
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'vypers'
+      MYSQL_ROOT_PASSWORD: 'password'
+  redis:
+    image: 'redis:latest'
+  api:
+    build: .
+    restart: always
+    depends_on:
+      - database
+      - redis
+    ports:
+      - '3002:3000'
+    environment:
+      DB_HOST: 'database'
+      DB_PORT: 3306
+      DB_USER: 'root'
+      DB_PASS: 'password'
+      DB_DATABASE: 'vypers'
+      REDIS_HOST: 'redis'
+      REDIS_PORT: 6379
+      STEAM_CLIENT_SECRET: '<secret>'
+      DEMO: true

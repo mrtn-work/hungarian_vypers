@@ -26,8 +26,13 @@ const admins = computed(() => data.value?.admins || [])
   </div>
   <stats/>
   <br/>
-  <h2 class="inter text-4xl mt-5">
-    <span class="gaming-gradient">Szerverek</span>&nbsp;és&nbsp;<span class="gaming-gradient">Személyzet</span>
-  </h2>
+  <section-title section-id="servers-and-staffs" data-aos="fade-right">
+    <span class="gaming-gradient">{{ $t('Szerverek') }}</span>&nbsp;{{ $t('és') }}&nbsp;<span class="gaming-gradient">{{ $t('Személyzet') }}</span>
+  </section-title>
   <servers-and-staffs :servers="servers" :admins="admins" />
+  <section-title section-id="computer-needs" data-aos="fade-right">
+    <span class="gaming-gradient">{{ $t('Gépigény') }}</span>
+  </section-title>
+  <pc-requirements />
+  <floating-footer/>
 </template>

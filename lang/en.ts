@@ -1,0 +1,16 @@
+export default {
+    Szerverek: 'Servers',
+    'Főoldal': 'Home',
+    'Szerverek, Személyzet': 'Servers & Staffs',
+    'Gépigény': 'Computer needs',
+    'Események': 'Events',
+    'IP Másolása': 'Copy IP',
+    'Elérhető játékosok': 'Available players',
+    'Egyedi játékosok': 'Custom players',
+    'Elérhető szerverek': 'Available servers',
+    'Továbbiak megtekintése': 'See more',
+    'és': 'and',
+    'Személyzet': 'Staffs',
+    'Steam ID Másolása': 'Copy Steam ID',
+    'Steam profil': 'Steam profile',
+}

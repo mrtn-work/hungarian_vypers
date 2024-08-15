@@ -2,7 +2,11 @@
 export default {
   content: [],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        darkBg: '#17161e'
+      }
+    },
   },
   plugins: [],
   darkMode: ['selector', '.dark']

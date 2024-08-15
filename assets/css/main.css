@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,700;1,14..32,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap');
 
 .roboto {
     font-family: "Roboto", sans-serif;
@@ -14,18 +15,53 @@
     font-style: normal;
 }
 
+.fira-code {
+    font-family: "Fira Code", monospace;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    background-image: linear-gradient(180deg, #945fd8 -.08%, #f7f9fe 67.19%);
+    background-color: #ffffff;
+    background-image: linear-gradient(180deg, #d946ef -.08%, #ffffff 67.19%);
     background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
 }
 
 .dark body {
-    background-image: linear-gradient(180deg, #2b104e -.08%, #08090a 67.19%);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
+    background-color: #08090a;
+    background-image: linear-gradient(180deg, #86198f -.08%, #08090a 67.19%);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #08090a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #401b4a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #562563;
+}
+
+/* Text selection */
+::-moz-selection {
+    background: rgba(255, 255, 255, 0.62);
+    color: #d946ef;
+}
+::selection {
+    background: rgba(255, 255, 255, 0.62);
+    color: #d946ef;
 }
 
 .blur-bg {
