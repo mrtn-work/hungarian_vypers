@@ -1,5 +1,5 @@
 <template>
-  <section class="grid grid-cols-3 gap-3 -mt-20 mb-10 z-10" id="stats">
+  <section class="grid grid-cols-3 gap-3 -mt-20 mb-10 z-10 overflow-x-hidden" id="stats">
     <div data-aos="fade-right">
       <h3 class="text-lg text-center text-gray-700 dark:text-gray-300">{{ $t('Elérhető játékosok') }}</h3>
       <div class="box fira-code">

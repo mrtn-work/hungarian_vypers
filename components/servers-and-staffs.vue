@@ -1,5 +1,5 @@
 <template>
-  <section class="md:grid md:grid-cols-2 md:gap-4 items-start my-5">
+  <section class="md:grid md:grid-cols-2 md:gap-4 items-start my-5 overflow-x-hidden">
     <div data-aos="flip-up">
       <h3 class="inter text-2xl mb-3">{{ $t('Szerverek') }}</h3>
       <ul>
