@@ -5,7 +5,9 @@ import Sun from "~/components/icons/sun.vue";
 import Moon from "~/components/icons/moon.vue";
 import {useI18n} from "#imports";
 import Flag from "~/components/icons/flag.vue";
-import {useCookie} from "#app";
+import {useCookie, useRoute} from "#app";
+
+const route = useRoute()
 
 const { locale, setLocale } = useI18n()
 const menuOpen = ref(false)
@@ -48,6 +50,8 @@ const toggleLang = async () => {
   await setLocale('en')
   lang.value = 'en'
 }
+
+const linkHash = computed(() => route.hash.substring(1))
 </script>
 
 <template>
@@ -75,16 +79,16 @@ const toggleLang = async () => {
       <div :class="{'hidden': !menuOpen}" class="items-center justify-between w-full md:flex md:w-auto md:order-1 text-sm" id="navbar-cta">
         <ul class="flex flex-col font-medium py-4 px-2 md:p-0 mt-4 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0">
           <li>
-            <a href="#" class="activeLink">{{ $t('Főoldal') }}</a>
+            <a href="#" :class="{'activeLink': linkHash == '', 'inactiveLink': linkHash != ''}">{{ $t('Főoldal') }}</a>
           </li>
           <li>
-            <a href="#servers-and-staffs" class="inactiveLink">{{ $t('Szerverek, Személyzet') }}</a>
+            <a href="#servers-and-staffs" :class="{'activeLink': linkHash == 'servers-and-staffs', 'inactiveLink': linkHash != 'servers-and-staffs'}">{{ $t('Szerverek, Személyzet') }}</a>
           </li>
           <li>
-            <a href="#computer-needs" class="inactiveLink">{{ $t('Gépigény') }}</a>
+            <a href="#computer-needs" :class="{'activeLink': linkHash == 'computer-needs', 'inactiveLink': linkHash != 'computer-needs'}">{{ $t('Gépigény') }}</a>
           </li>
           <li>
-            <a href="#events" class="inactiveLink">{{ $t('Események') }}</a>
+            <a href="#events" :class="{'activeLink': linkHash == 'events', 'inactiveLink': linkHash != 'events'}">{{ $t('Események') }}</a>
           </li>
         </ul>
       </div>

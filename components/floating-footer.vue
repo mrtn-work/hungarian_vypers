@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import Logo from "~/components/icons/logo.vue";
-import Instagram from "~/components/icons/instagram.vue";
-import Twitter from "~/components/icons/twitter.vue";
+import Steam from "~/components/icons/steam.vue";
+import Discord from "~/components/icons/discord.vue";
 
 const socials = ref([
-  {icon: Instagram, url: 'https://instagram.com'},
-  {icon: Twitter, url: 'https://x.com'},
+  {icon: Discord, url: 'https://dc.vypers.hu'},
+  {icon: Steam, url: 'https://steam.vypers.hu'},
 ])
 </script>
 

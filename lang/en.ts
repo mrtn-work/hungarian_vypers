@@ -19,4 +19,16 @@ export default {
     'Video card must be 1 GB or more and should be a DirectX 11-compatible with support for Shader Model 5.0': 'Video card must be 1 GB or more and should be a DirectX 11-compatible with support for Shader Model 5.0',
     'Version 11': 'Version 11',
     '85 GB available space': '85 GB available space',
+
+    // Events
+    'Hátralévő idő': 'Time left',
+    'Típus': 'Type',
+    'Nyeremény': 'Prize',
+    'Itt': 'Here',
+
+    // Copy
+    'Sikeresen kimásolva a vágólapra': 'Successfully copied to the clipboard',
+
+    // Footer
+    'Minden jog fenntartva': ' All rights reserved',
 }

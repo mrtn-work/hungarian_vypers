@@ -1,5 +1,5 @@
 <template>
-  <section class="md:grid md:grid-cols-2 md:gap-4 items-start my-5 overflow-x-hidden">
+  <section class="md:grid md:grid-cols-2 md:gap-4 items-start my-5 overflow-hidden">
     <div data-aos="flip-up">
       <h3 class="inter text-2xl mb-3">{{ $t('Szerverek') }}</h3>
       <ul>
@@ -23,9 +23,10 @@
           <a
               :href="`https://steamcommunity.com/profiles/${admin.player_steamid}/`"
               target="_blank"
-              class="px-4 py-0.5 rounded-lg border border-purple-400 text-purple-400 dark:border-purple-500 text-xs md:text-sm dark:text-purple-500 flex items-center space-x-1"
+              class="px-4 py-0.5 rounded-lg text-purple-400 text-xs md:text-sm dark:text-purple-500 flex items-center space-x-1"
           >
-            {{ $t('Steam profil') }}
+            <span>Steam</span>
+            <steam class="!w-6 !h-6" />
           </a>
         </li>
       </ul>
@@ -36,6 +37,7 @@
 <script setup lang="ts">
 import type {Server} from "~/types/server";
 import type {Admin} from "~/types/admin";
+import Steam from "~/components/icons/steam.vue";
 
 defineProps<{
   servers: Server[]

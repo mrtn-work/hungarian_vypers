@@ -9,8 +9,10 @@
 
 <script setup lang="ts">
 import '~/assets/css/main.css'
+import 'vue-toastification/dist/index.css'
 import {useCookie, useI18n} from "#imports"
 import {onMounted} from "vue";
+import Snowflakes from "magic-snowflakes";
 
 const { setLocale } = useI18n()
 
@@ -24,7 +26,14 @@ onMounted(() => {
   })
 
   setLocale(lang.value)
+  snow()
 })
+
+const snow = () => {
+  const now = new Date()
+  const month = now.getMonth() + 1
+  if([12, 1].includes(month)) new Snowflakes()
+}
 
 useHead({
   htmlAttrs: {

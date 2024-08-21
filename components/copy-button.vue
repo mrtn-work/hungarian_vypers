@@ -9,13 +9,19 @@
 
 <script setup lang="ts">
 import Copy from "~/components/icons/copy.vue";
+import {useToast} from "vue-toastification";
+import {useI18n} from "#imports";
+
+const { t } = useI18n()
 
 const props = defineProps<{
   copyText: string
 }>()
 
 const handleCopy = async () => {
-  if(navigator) await navigator.clipboard.writeText(props.copyText)
+  if(navigator) {
+    await navigator.clipboard.writeText(props.copyText)
+    useToast().info(t('Sikeresen kimásolva a vágólapra'))
+  }
 }
-
 </script>

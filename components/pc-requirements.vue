@@ -1,5 +1,5 @@
 <template>
-  <section class="my-5 relative shadow-md rounded-lg overflow-x-hidden" data-aos="fade-up">
+  <section class="mt-5 mb-10 relative shadow-md rounded-lg overflow-x-hidden" data-aos="fade-up">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
       <tbody>
         <template v-for="(val, title) in data" :key="title">

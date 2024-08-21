@@ -2,8 +2,9 @@
 import type {Server} from "~/types/server";
 import type {Admin} from "~/types/admin";
 import {computed} from "vue";
+import type {AppEvent} from "~/types/event";
 
-const { data } = useFetch<{servers: Server[]; admins: Admin[]}>('/api/main')
+const { data } = useFetch<{servers: Server[]; admins: Admin[]; event: AppEvent|null}>('/api/main')
 
 const firstServer = computed((): Server => {
   if(!data.value || data.value.servers.length == 0) {
@@ -18,6 +19,7 @@ const firstServer = computed((): Server => {
 
 const servers = computed(() => data.value?.servers || [])
 const admins = computed(() => data.value?.admins || [])
+const event = computed(() => data.value?.event || null)
 </script>
 
 <template>
@@ -34,5 +36,9 @@ const admins = computed(() => data.value?.admins || [])
     <span class="gaming-gradient">{{ $t('Gépigény') }}</span>
   </section-title>
   <pc-requirements />
+  <section-title v-if="event != null" section-id="events" data-aos="fade-right">
+    <span class="gaming-gradient">{{ $t('Események') }}</span>
+  </section-title>
+  <events v-if="event != null" :event="event as AppEvent" />
   <floating-footer/>
 </template>

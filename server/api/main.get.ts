@@ -7,6 +7,8 @@ import Redis from "ioredis";
 import axios from 'axios'
 import fakeDataAdmins from "~/server/fakeDataAdmins";
 import fakeDataServers from "~/server/fakeDataServers";
+import {AppEvent} from "~/types/event";
+import fakeDataEvents from "~/server/fakeDataEvents";
 
 const fetchServers = async (db: Connection): Promise<Server[]> => {
     if(process.env.DEMO) return fakeDataServers()
@@ -50,11 +52,19 @@ const fetchAdmins = async (db: Connection): Promise<Admin[]> => {
     return await fetchAvatars(rows as Admin[])
 }
 
-export default defineEventHandler(async (event) => {
+const fetchEvent = async (db: Connection): Promise<AppEvent|null> => {
+    if(process.env.DEMO) return fakeDataEvents()
+    const [rows] = await db.execute<RowDataPacket[]>('select * from events where end_date > now() order by id desc limit 1')
+    if(rows.length == 0) return null
+    return rows[0] as AppEvent
+}
+
+export default defineEventHandler(async () => {
     const db = await mysql()
     const servers = await fetchServers(db)
     const admins = await fetchAdmins(db)
+    const event = await fetchEvent(db)
     await db.end()
 
-    return {servers, admins}
+    return {servers, admins, event}
 })
