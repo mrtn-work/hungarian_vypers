@@ -2,10 +2,12 @@
 import Logo from "~/components/icons/logo.vue";
 import Steam from "~/components/icons/steam.vue";
 import Discord from "~/components/icons/discord.vue";
+import Ban from "~/components/icons/ban.vue";
 
 const socials = ref([
-  {icon: Discord, url: 'https://dc.vypers.hu'},
-  {icon: Steam, url: 'https://steam.vypers.hu'},
+  {icon: Ban, url: 'https://bans.vypers.hu', title: 'Bans'},
+  {icon: Discord, url: 'https://dc.vypers.hu', title: 'Discord'},
+  {icon: Steam, url: 'https://steam.vypers.hu', title: 'Steam'},
 ])
 </script>
 
@@ -23,14 +25,9 @@ const socials = ref([
     </div>
     <hr class="md:hidden my-3 border-none bg-gray-700 h-0.5 rounded-lg" />
     <div class="text-sm dark:text-gray-500">
-      <ul>
-        <li>
-          <a target="_blank" href="https://bans.vypers.hu">Bans</a>
-        </li>
-      </ul>
-      <div class="mt-2 flex items-center space-x-2">
-        <template v-for="{icon, url} in socials" :key="url">
-          <a :href="url" target="_blank">
+      <div class="flex items-center space-x-2">
+        <template v-for="{icon, url, title} in socials" :key="url">
+          <a :href="url" target="_blank" :title="title">
             <component :is="icon" />
           </a>
         </template>

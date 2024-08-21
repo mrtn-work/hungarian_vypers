@@ -25,6 +25,10 @@ export default {
     'Típus': 'Type',
     'Nyeremény': 'Prize',
     'Itt': 'Here',
+    Nap: 'Day(s)',
+    'Óra': 'Hour(s)',
+    Perc: 'Minute(s)',
+    'Másodperc': 'Second(s)',
 
     // Copy
     'Sikeresen kimásolva a vágólapra': 'Successfully copied to the clipboard',
