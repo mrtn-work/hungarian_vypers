@@ -10,7 +10,7 @@ import fakeDataServers from "~/server/fakeDataServers";
 import {AppEvent} from "~/types/event";
 import fakeDataEvents from "~/server/fakeDataEvents";
 
-const fetchServers = async (db: Connection): Promise<Server[]> => {
+export const fetchServers = async (db: Connection): Promise<Server[]> => {
     if(process.env.DEMO) return fakeDataServers()
     const [rows] = await db.execute<RowDataPacket[]>('select * from sa_servers')
     return rows as Server[]
@@ -24,7 +24,7 @@ const fetchAvatars = async (admins: Admin[]): Promise<Admin[]> => {
 
     for(let i = 0; i < admins.length; i++) {
         const admin = admins[i]
-        const profileKey = `steam_avatar_${admin.player_steamid}`
+        const profileKey = `vypers.steam_avatar_${admin.player_steamid}`
         const url = await redis.get(profileKey)
         if(url != null) admins[i].avatar = url
         else {
@@ -32,7 +32,6 @@ const fetchAvatars = async (admins: Admin[]): Promise<Admin[]> => {
             try {
                 const res = await axios.get(url)
                 const avatar = res?.data?.response?.players?.[0]?.avatarmedium || ''
-                console.log(res.data.response)
                 if(avatar) {
                     redis.setex(profileKey, 60 * 60 * 12, avatar)
                     admins[i].avatar = avatar

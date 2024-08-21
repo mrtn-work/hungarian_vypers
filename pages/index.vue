@@ -4,7 +4,7 @@ import type {Admin} from "~/types/admin";
 import {computed} from "vue";
 import type {AppEvent} from "~/types/event";
 
-const { data } = useFetch<{servers: Server[]; admins: Admin[]; event: AppEvent|null}>('/api/main')
+const { data } = await useFetch<{servers: Server[]; admins: Admin[]; event: AppEvent|null}>('/api/main')
 
 const firstServer = computed((): Server => {
   if(!data.value || data.value.servers.length == 0) {

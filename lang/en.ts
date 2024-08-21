@@ -24,6 +24,7 @@ export default {
     'Hátralévő idő': 'Time left',
     'Típus': 'Type',
     'Nyeremény': 'Prize',
+    Szerver: 'Server',
     'Itt': 'Here',
     Nap: 'Day(s)',
     'Óra': 'Hour(s)',

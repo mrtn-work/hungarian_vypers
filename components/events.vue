@@ -9,7 +9,7 @@ const countDown = computed(() => props.event.end_date != undefined)
 </script>
 
 <template>
-  <div class="my-5 relative shadow-md rounded-lg overflow-x-hidden" data-aos="fade-up">
+  <div class="my-5 relative shadow-md rounded-lg overflow-x-scroll" data-aos="fade-up">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
       <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-800 dark:text-gray-400">
         <tr>

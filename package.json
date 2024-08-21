@@ -15,6 +15,7 @@
     "@nuxtjs/i18n": "^8.3.3",
     "@nuxtjs/tailwindcss": "^6.12.1",
     "axios": "^1.7.4",
+    "human-number": "^2.0.4",
     "mysql2": "^3.11.0",
     "nuxt": "^3.12.4",
     "nuxt-aos": "^1.2.5",
@@ -22,6 +23,7 @@
     "vue-toastification": "^2.0.0-rc.5"
   },
   "devDependencies": {
+    "@types/human-number": "^1.0.2",
     "@types/mysql": "^2.15.26",
     "@types/node": "^22.3.0",
     "magic-snowflakes": "^6.3.0"
