@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   ],
   runtimeConfig: {
     public: {
-      widgetBot: process.env.WIDGETBOT_URL || undefined
+      widgetBot: process.env.WIDGETBOT_URL
     }
   }
 })

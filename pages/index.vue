@@ -24,6 +24,8 @@ const eventsData = computed((): AppEvent[] => data.value?.events || [])
 const pubData = useRuntimeConfig()
 
 const widgetBot = ref(pubData.public.widgetBot)
+
+console.log('PUBLIC DATA', pubData.public)
 </script>
 
 <template>

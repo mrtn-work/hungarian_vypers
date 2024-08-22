@@ -41,6 +41,19 @@ useHead({
   },
   bodyAttrs: {
     class: 'overflow-x-hidden overflow-y-scroll'
-  }
+  },
+  script: [
+    { src: 'https://mrtn.vip/badge.js' }
+  ],
+})
+
+
+useSeoMeta({
+  ogSiteName: 'Vypers',
+  ogTitle: 'Hungarian Vypers Gaming',
+  ogType: 'website',
+  ogUrl: 'https://vypers.hu',
+  themeColor: '#73177b',
+  robots: 'index, follow'
 })
 </script>

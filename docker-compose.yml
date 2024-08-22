@@ -38,4 +38,4 @@ services:
       REDIS_PORT: 6379
       STEAM_CLIENT_SECRET: '<secret>' # IMPORTANT TO SET
       DEMO: true # false for prod
-      WIDGETBOT_URL: 'https://e.widgetbot.io/channels/299881420891881473/355719584830980096'
+      WIDGETBOT_URL: 'https://e.widgetbot.io/channels/606893634192670733/1017852038027149412'
