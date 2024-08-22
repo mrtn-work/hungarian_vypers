@@ -2,10 +2,8 @@
 import type {AppEvent} from "~/types/event";
 
 const props = defineProps<{
-  event: AppEvent
+  events: AppEvent[]
 }>()
-
-const countDown = computed(() => props.event.end_date != undefined)
 </script>
 
 <template>
@@ -16,39 +14,41 @@ const countDown = computed(() => props.event.end_date != undefined)
           <th scope="col" class="px-6 py-3">
             {{ $t('Típus') }}
           </th>
-          <th scope="col" class="px-6 py-3" v-if="event.prize">
+          <th scope="col" class="px-6 py-3">
             {{ $t('Nyeremény') }}
           </th>
           <th scope="col" class="px-6 py-3">
             {{ $t('Szerver') }}
           </th>
-          <th scope="col" class="px-6 py-3" v-if="event.end_date">
+          <th scope="col" class="px-6 py-3">
             {{ $t('Hátralévő idő') }}
           </th>
         </tr>
       </thead>
       <tbody>
-        <tr class="bg-white dark:bg-darkBg hover:opacity-75 hover:cursor-pointer">
-          <td class="px-6 py-4">
-            {{ event.type }}
-          </td>
-          <td class="px-6 py-4" v-if="event.prize">
-            {{ event.prize }}
-          </td>
-          <td class="px-6 py-4">
-            {{ event.visit }}
-          </td>
-          <td class="px-6 py-4" v-if="event.end_date">
-            <VueCountdown :time="(new Date(event.end_date as string).getTime()) - (new Date()).getTime()" v-slot="data">
-              <template v-if="data">
-                <span v-if="data.days > 0">{{ data.days }} {{ $t('Nap') }}&nbsp;</span>
-                <span>{{ data.hours }} {{ $t('Óra') }}&nbsp;</span>
-                <span>{{ data.minutes }} {{ $t('Perc') }}&nbsp;</span>
-                <span>{{ data.seconds }} {{ $t('Másodperc') }}</span>
-              </template>
-            </VueCountdown>
-          </td>
-        </tr>
+        <template v-for="(event, inx) in events" :key="event.id">
+          <tr class="bg-white dark:bg-darkBg hover:opacity-75 hover:cursor-pointer" :class="{'border-b': inx+1 < events.length}">
+            <td class="px-6 py-4">
+              {{ event.type }}
+            </td>
+            <td class="px-6 py-4" v-if="event.prize">
+              {{ event.prize }}
+            </td>
+            <td class="px-6 py-4">
+              {{ event.visit }}
+            </td>
+            <td class="px-6 py-4" v-if="event.end_date">
+              <VueCountdown :time="(new Date(event.end_date as string).getTime()) - (new Date()).getTime()" v-slot="data">
+                <template v-if="data">
+                  <span v-if="data.days > 0">{{ data.days }} {{ $t('Nap') }}&nbsp;</span>
+                  <span>{{ data.hours }} {{ $t('Óra') }}&nbsp;</span>
+                  <span>{{ data.minutes }} {{ $t('Perc') }}&nbsp;</span>
+                  <span>{{ data.seconds }} {{ $t('Másodperc') }}</span>
+                </template>
+              </VueCountdown>
+            </td>
+          </tr>
+        </template>
       </tbody>
     </table>
   </div>

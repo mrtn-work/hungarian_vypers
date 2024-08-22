@@ -1,11 +1,17 @@
 import mysql from 'mysql2/promise'
 
-export default () => {
+export enum MySQLDatabase {
+    K4 = 'K4_',
+    SA = 'SA_',
+    EVENT = 'EV_',
+}
+
+export default (env: MySQLDatabase) => {
     return mysql.createConnection({
         host: process.env.DB_HOST,
         port: process.env.DB_PORT as number | undefined,
-        user: process.env.DB_USER,
-        password: process.env.DB_PASS,
-        database: process.env.DB_DATABASE,
+        user: process.env[env + 'USER'],
+        password: process.env[env + 'PASS'],
+        database: process.env[env + 'DATABASE'],
     })
 }

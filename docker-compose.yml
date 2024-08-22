@@ -18,10 +18,24 @@ services:
     environment:
       DB_HOST: database
       DB_PORT: 3306
-      DB_USER: 'root'
-      DB_PASS: 'password'
-      DB_DATABASE: 'vypers'
+
+      # SA CREDENTIALS
+      SA_USER: 'root'
+      SA_PASS: 'password'
+      SA_DATABASE: 'vypers'
+
+      # K4 CREDENTIALS
+      K4_USER: 'root'
+      K4_PASS: 'password'
+      K4_DATABASE: 'vypers'
+
+      # Events CREDENTIALS
+      EV_USER: 'root'
+      EV_PASS: 'password'
+      EV_DATABASE: 'vypers'
+
       REDIS_HOST: 'redis'
       REDIS_PORT: 6379
-      STEAM_CLIENT_SECRET: '<secret>'
-      DEMO: true
+      STEAM_CLIENT_SECRET: '<secret>' # IMPORTANT TO SET
+      DEMO: true # false for prod
+      WIDGETBOT_URL: 'https://e.widgetbot.io/channels/299881420891881473/355719584830980096'

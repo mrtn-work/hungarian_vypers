@@ -2,13 +2,13 @@ import type {Connection} from "mysql2/promise";
 import type {RowDataPacket} from "mysql2";
 import type {Server} from "~/types/server";
 import type {Admin} from "~/types/admin";
-import mysql from "~/server/mysql";
-import Redis from "ioredis";
+import mysql, {MySQLDatabase} from "~/server/mysql";
 import axios from 'axios'
 import fakeDataAdmins from "~/server/fakeDataAdmins";
 import fakeDataServers from "~/server/fakeDataServers";
 import {AppEvent} from "~/types/event";
 import fakeDataEvents from "~/server/fakeDataEvents";
+import {getRedis} from "~/server/redis";
 
 export const fetchServers = async (db: Connection): Promise<Server[]> => {
     if(process.env.DEMO) return fakeDataServers()
@@ -17,10 +17,7 @@ export const fetchServers = async (db: Connection): Promise<Server[]> => {
 }
 
 const fetchAvatars = async (admins: Admin[]): Promise<Admin[]> => {
-    const redis = new Redis({
-        host: process.env.REDIS_HOST,
-        port: process.env.REDIS_PORT as number|undefined,
-    })
+    const redis = getRedis()
 
     for(let i = 0; i < admins.length; i++) {
         const admin = admins[i]
@@ -51,19 +48,32 @@ const fetchAdmins = async (db: Connection): Promise<Admin[]> => {
     return await fetchAvatars(rows as Admin[])
 }
 
-const fetchEvent = async (db: Connection): Promise<AppEvent|null> => {
+const fetchEvents = async (db: Connection): Promise<AppEvent[]> => {
     if(process.env.DEMO) return fakeDataEvents()
-    const [rows] = await db.execute<RowDataPacket[]>('select * from events where end_date > now() order by id desc limit 1')
-    if(rows.length == 0) return null
-    return rows[0] as AppEvent
+    const [rows] = await db.execute<RowDataPacket[]>('select * from events where end_date > now() order by end_date asc')
+    return rows as AppEvent[]
 }
 
 export default defineEventHandler(async () => {
-    const db = await mysql()
+    const redis = getRedis()
+    const rKey = 'vypers.data.main'
+
+    if(await redis.exists(rKey)) {
+        const data = await redis.get(rKey)
+        if(data) return JSON.parse(data) as { servers: Server[]; admins: Admin[]; events: AppEvent[] }
+    }
+
+    const db = await mysql(MySQLDatabase.SA)
     const servers = await fetchServers(db)
     const admins = await fetchAdmins(db)
-    const event = await fetchEvent(db)
     await db.end()
+    const eventDB = await mysql(MySQLDatabase.EVENT)
+    const events = await fetchEvents(eventDB)
+    await eventDB.end()
 
-    return {servers, admins, event}
+    const data = {servers, admins, events}
+
+    await redis.setex(rKey, 60 * 60, JSON.stringify(data))
+
+    return data
 })

@@ -6,5 +6,10 @@ export default defineNuxtConfig({
   plugins: [
     {src: '~/plugins/vue-countdown.ts', mode: 'client'},
     {src: '~/plugins/vue-toastification.ts', mode: 'client'}
-  ]
+  ],
+  runtimeConfig: {
+    public: {
+      widgetBot: process.env.WIDGETBOT_URL || undefined
+    }
+  }
 })
