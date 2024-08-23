@@ -6,6 +6,7 @@ import Moon from "~/components/icons/moon.vue";
 import {useI18n} from "#imports";
 import Flag from "~/components/icons/flag.vue";
 import {useCookie, useRoute} from "#app";
+import { faCalendar } from "@fortawesome/free-regular-svg-icons";
 
 const route = useRoute()
 
@@ -63,9 +64,13 @@ const linkHash = computed(() => route.hash.substring(1))
         <span class="self-center text-xl whitespace-nowrap dark:text-white roboto uppercase">Vypers</span>
       </a>
       <div class="flex md:order-2 space-x-2 md:space-x-1 rtl:space-x-reverse">
-        <button @click="toggleLang" type="button" class="flex items-center space-x-1 text-gray-500 px-3 py-1 rounded-lg bg-gray-200 dark:bg-gray-800 bg-opacity-70">
+        <button @click="toggleLang" type="button" class="flex items-center space-x-1 text-gray-500 px-3 py-1 rounded-lg">
           <span>{{ locale.toUpperCase() }}</span>
-          <flag/>
+          <img
+            :src="locale.toUpperCase() == 'HU' ? 'https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1ed-1f1fa.svg' : 'https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1fa-1f1f8.svg'"
+            :alt="locale.toUpperCase() == 'HU' ? '🇭🇺' : '🇺🇸'"
+            class="inline-block w-4 h-4"
+          />
         </button>
         <button @click="toggleTheme" type="button" class="text-black dark:text-white p-2 min-w-9 min-h-9 w-9 h-9 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 bg-opacity-70 flex items-center justify-center my-auto">
           <sun class="text-yellow-300 hidden dark:inline-block" />
@@ -79,16 +84,24 @@ const linkHash = computed(() => route.hash.substring(1))
       <div :class="{'hidden': !menuOpen}" class="items-center justify-between w-full md:flex md:w-auto md:order-1 text-sm" id="navbar-cta">
         <ul class="flex flex-col font-medium py-4 px-2 md:p-0 mt-4 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0">
           <li>
-            <a href="#" :class="{'activeLink': linkHash == '', 'inactiveLink': linkHash != ''}">{{ $t('Főoldal') }}</a>
+            <a href="#" :class="{'activeLink': linkHash == '', 'inactiveLink': linkHash != ''}">
+              <font-awesome icon="house" /> {{ $t('Főoldal') }}
+            </a>
           </li>
           <li>
-            <a href="#servers-and-staffs" :class="{'activeLink': linkHash == 'servers-and-staffs', 'inactiveLink': linkHash != 'servers-and-staffs'}">{{ $t('Szerverek, Személyzet') }}</a>
+            <a href="#servers-and-staffs" :class="{'activeLink': linkHash == 'servers-and-staffs', 'inactiveLink': linkHash != 'servers-and-staffs'}">
+              <font-awesome icon="server" /> {{ $t('Szerverek, Személyzet') }}
+            </a>
           </li>
           <li>
-            <a href="#computer-needs" :class="{'activeLink': linkHash == 'computer-needs', 'inactiveLink': linkHash != 'computer-needs'}">{{ $t('Gépigény') }}</a>
+            <a href="#computer-needs" :class="{'activeLink': linkHash == 'computer-needs', 'inactiveLink': linkHash != 'computer-needs'}">
+              <font-awesome icon="user-secret" /> {{ $t('Gépigény') }}
+            </a>
           </li>
           <li>
-            <a href="#events" :class="{'activeLink': linkHash == 'events', 'inactiveLink': linkHash != 'events'}">{{ $t('Események') }}</a>
+            <a href="#events" :class="{'activeLink': linkHash == 'events', 'inactiveLink': linkHash != 'events'}">
+              <font-awesome :icon="faCalendar" /> {{ $t('Események') }}
+            </a>
           </li>
         </ul>
       </div>

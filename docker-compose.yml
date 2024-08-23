@@ -39,3 +39,4 @@ services:
       STEAM_CLIENT_SECRET: '<secret>' # IMPORTANT TO SET
       DEMO: true # false for prod
       WIDGETBOT_URL: 'https://e.widgetbot.io/channels/606893634192670733/1017852038027149412'
+      CACHE_TIME: 15 # ? minutes

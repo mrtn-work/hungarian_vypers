@@ -73,7 +73,7 @@ export default defineEventHandler(async () => {
 
     const data = {servers, admins, events}
 
-    await redis.setex(rKey, 60 * 60, JSON.stringify(data))
+    await redis.setex(rKey, 60 * parseInt(process.env.CACHE_TIME || '1'), JSON.stringify(data))
 
     return data
 })

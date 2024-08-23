@@ -52,7 +52,7 @@ const fetchInfoBox = async (db: Connection, k4DB: Connection): Promise<Boxes> =>
         players: activePlayers,
     }
 
-    redis.setex(rKey, 60 * 30, JSON.stringify(cacheData))
+    redis.setex(rKey, 60 * parseInt(process.env.CACHE_TIME || '1'), JSON.stringify(cacheData))
 
     return cacheData
 }
