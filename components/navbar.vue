@@ -95,7 +95,7 @@ const linkHash = computed(() => route.hash.substring(1))
           </li>
           <li>
             <a href="#computer-needs" :class="{'activeLink': linkHash == 'computer-needs', 'inactiveLink': linkHash != 'computer-needs'}">
-              <font-awesome icon="user-secret" /> {{ $t('Gépigény') }}
+              <font-awesome icon="computer" /> {{ $t('Gépigény') }}
             </a>
           </li>
           <li>
