@@ -19,7 +19,7 @@ const socials = ref([
         <span>Vypers</span>
       </h2>
       <p class="dark:text-gray-500 text-xs mt-2">
-        Copyright © 2024 · Vypers ·<br/>
+        {{ $t('Copyright') }} © {{ new Date().getFullYear() }} · Vypers ·<br/>
         {{ $t('Minden jog fenntartva') }}
       </p>
     </div>

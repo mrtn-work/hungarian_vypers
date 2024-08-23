@@ -36,4 +36,5 @@ export default {
 
     // Footer
     'Minden jog fenntartva': ' All rights reserved',
+    'Copyright': 'Copyright',
 }

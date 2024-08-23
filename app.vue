@@ -36,14 +36,19 @@ const snow = () => {
 }
 
 useHead({
+  title: 'Hungarian Vypers Gaming',
   htmlAttrs: {
-    class: [theme.value, 'bg-[]'].join(' ')
+    class: [theme.value].join(' ')
   },
   bodyAttrs: {
     class: 'overflow-x-hidden overflow-y-scroll'
   },
   script: [
-    { src: 'https://mrtn.vip/badge.js' }
+    {
+      src: 'https://mrtn.vip/badge.js',
+      tagPosition: 'bodyClose',
+      'data-vip-theme': theme.value,
+    }
   ],
 })
 
